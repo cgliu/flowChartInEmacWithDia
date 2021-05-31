@@ -7,9 +7,9 @@
   
   I have tried several options, such as Inkscape, LibreOffice Draw, and Dia. Inkscape is an excellent tool and I often
   use it for free drawing. It provides native support to LaTex formula. However, it isn't good at drawing flow chart,
-  which often needs to create auto connection between objects. Libreoffice Draw has extention that support LaTex, but it
-  is not quite easy to use. I end up with Dia for its easy-to-use features, high quality figures, and native support to
-  LaTex.
+  e.g. you can't creat auto connection between objects (let me know if you know how). Libreoffice Draw has an extention
+  to support LaTex, but it is lack of features to create a little complicate chart. I end up with Dia for its easy-to-use
+  features, high quality figures, and native support to LaTex.
   
 
 * Install Dia
@@ -39,8 +39,15 @@
   I am now using dia 0.97+git, according to Dia help document, the LaTex formula should be enclosed between two '$'.
   When exporting to LaTex PGF or TikZ, Dia assumes that every special character you have inserted are supposed to be
   that way, and escapes the characters. So your math dollars will be escaped \$, your backslashes will be escaped
-  \ensuremath{\backslash} and so on. So when you include the Tex, they don't export as you want. I wrote a Python
-  script to unescaped the special characters in PGF export.
+  \ensuremath{\backslash} and so on. So when you include the Tex, they don't show up as you expect, for example, it looks like. 
+
+  ![before fix](./before_fix.png)    
+
+  I wrote a Python script to unescaped the special characters in PGF export. After this, it exported as expected, e.g.
+
+  ![after fix](./after_fix.png)    
+  
+  To use it, 
   ```
   >>> fix_formula.py <source_folder> 
   ```
